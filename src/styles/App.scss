@@ -11,7 +11,13 @@
   justify-content: space-around;
   height: 100vh;
   align-items: flex-start;
+  transition: backdrop-filter 2s;
 }
+
+.info:hover {
+  backdrop-filter: blur(10px);
+}
+
 
 aside {
   text-align: right;
