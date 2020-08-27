@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import Gallery from "react-photo-gallery";
 import { photos } from "../photos/photos";
 import "../styles/Stills.scss"
+// import { Grow } from '@material-ui/core';
+import { CSSTransition } from 'react-transition-group';
 // import { useState } from "react";
 
 function Stills(props) {
@@ -12,20 +14,40 @@ function Stills(props) {
     if(isHidden){
       setIsHidden(false);
       props.onChange(true);
+      props.onBlur(true);
     } else {
       setIsHidden(true);
       props.onChange(false);
+      props.onBlur(false);
     }
   };
 
   return (
     <div className="stills" 
-    onMouseEnter={() => setShown(true)}
-    onMouseLeave={() => setShown(false)}
+    onMouseEnter={() => {
+      setShown(true);
+      props.onBlur(true);
+    }
+    }
+    onMouseLeave={() => {
+      setShown(false)
+      props.onBlur(false);
+
+    }
+    }
     >
       <h1 onClick={hide}>Stills</h1>
       {isHidden && <Gallery photos={photos} />}
-      {!isHidden && shown && <img className="still_image" src='https://images.unsplash.com/photo-1516961642265-531546e84af2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80' alt='camera'></img>}
+      {!isHidden &&
+        <CSSTransition
+        in={shown}
+        timeout={1000}
+        classNames="alert"
+        unmountOnExit
+        >
+          <img className="img_hover" src='https://images.unsplash.com/photo-1516961642265-531546e84af2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80' alt='camera'></img> 
+        </CSSTransition>
+      }
     </div>
   );
 }

@@ -3,20 +3,29 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  // backdrop-filter: blur(10px);
+  transition: backdrop-filter 2s, background 2s;
+}
+
+.App_blur {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: backdrop-filter 2s, background-color 2s;
 }
 
 .info {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 100vh;
+  height: 100%;
   align-items: flex-start;
-  transition: backdrop-filter 2s;
+  // transition: backdrop-filter 2s;
 }
 
-.info:hover {
-  backdrop-filter: blur(10px);
-}
 
 
 aside {
@@ -26,6 +35,5 @@ aside {
 .border {
   border: 1px solid;
   border-color: white;
-  
-  height: 100%;
+  height: 95vh;
 }
