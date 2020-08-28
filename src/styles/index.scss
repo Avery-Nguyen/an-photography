@@ -20,5 +20,10 @@ html {
 }
 
 .img_hover {
-  height: 80vh;
+  height: 100vh;
+  z-index: -1;
+  position: relative;
+  margin-top: -70px;
+  width: auto;
 }
+

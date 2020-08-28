@@ -14,11 +14,11 @@ function Stills(props) {
     if(isHidden){
       setIsHidden(false);
       props.onChange(true);
-      props.onBlur(true);
+      // props.onBlur(true);
     } else {
       setIsHidden(true);
       props.onChange(false);
-      props.onBlur(false);
+      // props.onBlur(false);
     }
   };
 
@@ -36,12 +36,12 @@ function Stills(props) {
     }
     }
     >
-      <h1 onClick={hide}>Stills</h1>
+      <h1 id={isHidden ? "stills_center" : "stills"} onClick={hide}>Stills</h1>
       {isHidden && <Gallery photos={photos} />}
       {!isHidden &&
         <CSSTransition
         in={shown}
-        timeout={1000}
+        timeout={2000}
         classNames="alert"
         unmountOnExit
         >

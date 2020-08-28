@@ -11,11 +11,11 @@ function About(props) {
     if(isHidden){
       setIsHidden(false);
       props.onChange(true);
-      props.onBlur(true);
+      // props.onBlur(true);
     } else {
       setIsHidden(true);
       props.onChange(false);
-      props.onBlur(false);
+      // props.onBlur(false);
     }
   };
 
@@ -33,12 +33,12 @@ function About(props) {
       }
     }
     >
-      <h1 onClick={hide}>About</h1>
+      <h1 id={isHidden ? "about_cente" : "about"} onClick={hide}>About</h1>
       {isHidden && <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam dolorum consectetur incidunt odio, repellat in, accusantium dicta adipisci earum repellendus qui maiores, reiciendis quis vel quisquam corporis voluptatem rerum dolorem.</p>}
       {!isHidden &&
         <CSSTransition
         in={shown}
-        timeout={1000}
+        timeout={2000}
         classNames="alert2"
         unmountOnExit
         >
