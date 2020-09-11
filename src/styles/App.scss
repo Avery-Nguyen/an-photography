@@ -26,14 +26,40 @@
   // transition: backdrop-filter 2s;
 }
 
-
-
-aside {
-  text-align: right;
-}
-
 .border {
   border: 1px solid;
   border-color: white;
   height: 100vh;
 }
+
+aside {
+  text-align: right;
+}
+
+
+h1 {
+  font-size: 100px;
+}
+
+@media only screen and (max-width: 479px) {
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+ 
+    align-items: flex-start;
+
+  }
+
+  .border {
+    border-bottom: 1px solid;
+    border-color: red;
+    height: 0;
+    width: 100vw;
+  }
+
+  h1 {
+    font-size: 50;
+  }
+}
+
