@@ -1,8 +1,3 @@
-@media only screen and (max-width: 479px) {
-
-}
-
-
 .alert-enter {
   opacity: 0;
   // backdrop-filter: blur(10px);
@@ -28,4 +23,16 @@
 
 #stills_center {
   margin: auto;
+}
+
+@media only screen and (max-width: 479px) {
+  
+  #stills {
+    margin: auto;
+    // height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
 }

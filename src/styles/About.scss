@@ -30,3 +30,14 @@
 #about_center {
   margin: auto;
 }
+
+@media only screen and (max-width: 479px) {
+  #about {
+    margin: auto;
+    // height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+}
