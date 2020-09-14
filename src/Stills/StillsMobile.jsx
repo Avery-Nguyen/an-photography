@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Gallery from "react-photo-gallery";
 import { photos } from "../photos/photos";
 import "../styles/Stills.scss"
