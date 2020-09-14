@@ -22,8 +22,10 @@ function App() {
 
   return (
     <div className={blur ? "App_blur" : "App"}>
-      <header>Avery Nguyen Photography</header>
-      <aside>Contact</aside>
+      <header>
+        <div className={'header_text'}>Avery Nguyen Photography</div>
+        <div className={'header_text'}>Content</div>
+      </header>
       <div className="info">
         {
         aboutHidden && (width < breakpoint ? <AboutMobile
