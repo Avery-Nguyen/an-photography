@@ -7,20 +7,20 @@ import { CSSTransition } from 'react-transition-group';
 // import { useState } from "react";
 
 function Stills(props) {
-  const [isHidden, setIsHidden] = useState(false);
+  // const [isHidden, setIsHidden] = useState(false);
   const [shown, setShown] = useState(false)
 
-  const hide = function() {
-    if(isHidden){
-      setIsHidden(false);
-      props.onChange(true);
-      // props.onBlur(true);
-    } else {
-      setIsHidden(true);
-      props.onChange(false);
-      // props.onBlur(false);
-    }
-  };
+  // const hide = function() {
+  //   if(isHidden){
+  //     setIsHidden(false);
+  //     props.onChange(true);
+  //     // props.onBlur(true);
+  //   } else {
+  //     setIsHidden(true);
+  //     props.onChange(false);
+  //     // props.onBlur(false);
+  //   }
+  // };
 
   return (
     <div className="stills" 
@@ -36,9 +36,9 @@ function Stills(props) {
     }
     }
     >
-      <h1 id={isHidden ? "stills_center" : "stills"} onClick={hide}>Stills</h1>
-      {isHidden && <Gallery photos={photos} />}
-      {!isHidden &&
+      <h1 id={props.isHidden ? "stills_center" : "stills"} onClick={props.hide}>Stills</h1>
+      {props.isHidden && <Gallery photos={photos} />}
+      {!props.isHidden &&
         <CSSTransition
         in={shown}
         timeout={2000}

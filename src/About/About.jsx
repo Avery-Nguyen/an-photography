@@ -4,20 +4,20 @@ import { CSSTransition } from 'react-transition-group';
 
 function About(props) {
 
-  const [isHidden, setIsHidden] = useState(false);
+  // const [isHidden, setIsHidden] = useState(false);
   const [shown, setShown] = useState(false)
 
-  const hide = function() {
-    if(isHidden){
-      setIsHidden(false);
-      return props.onChange(true);
-      // props.onBlur(true);
-    } else {
-      setIsHidden(true);
-      return props.onChange(false);
-      // props.onBlur(false);
-    }
-  };
+  // const hide = function() {
+  //   if(isHidden){
+  //     setIsHidden(false);
+  //     props.onChange(true);
+  //     // props.onBlur(true);
+  //   } else {
+  //     setIsHidden(true);
+  //     props.onChange(false);
+  //     // props.onBlur(false);
+  //   }
+  // };
 
   return (
     <div className="about"
@@ -33,9 +33,9 @@ function About(props) {
       }
     }
     >
-      <h1 id={isHidden ? "about_cente" : "about_title"} onClick={hide}>About</h1>
-      {isHidden && <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam dolorum consectetur incidunt odio, repellat in, accusantium dicta adipisci earum repellendus qui maiores, reiciendis quis vel quisquam corporis voluptatem rerum dolorem.</p>}
-      {!isHidden &&
+      <h1 id={props.isHidden ? "about_cente" : "about_title"} onClick={props.hide}>About</h1>
+      {props.isHidden && <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam dolorum consectetur incidunt odio, repellat in, accusantium dicta adipisci earum repellendus qui maiores, reiciendis quis vel quisquam corporis voluptatem rerum dolorem.</p>}
+      {!props.isHidden &&
         <CSSTransition
         in={shown}
         timeout={2000}

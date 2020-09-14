@@ -4,13 +4,20 @@ import About from './About/About'
 import Stills from './Stills/Stills'
 import AboutMobile from './About/AboutMobile'
 import StillsMobile from './Stills/StillsMobile'
+import Drawer from '@material-ui/core/Drawer';
+
+
+
 
 function App() {
   const [aboutHidden, setAboutHidden] = useState(true)
   const [stillHidden, setStillHidden] = useState(true)
   const [blur, setBlur] = useState(false)
-  const [width, setWidth] = React.useState(window.innerWidth);
+  const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 479;
+  const [drawer, setDrawer] = useState(false)
+  const [isAboutHidden, setIsAboutHidden] = useState(false);
+  const [isStillsHidden, setIsStillsHidden] = useState(false);
 
   useEffect(() => {
     const handleWindowResize = () => setWidth(window.innerWidth)
@@ -20,28 +27,65 @@ function App() {
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
 
+  const hideAbout = function() {
+    if(isAboutHidden){
+      setIsAboutHidden(false);
+      setStillHidden(true);
+    } else {
+      setIsAboutHidden(true);
+      setStillHidden(false);
+    }
+  };
+
+  const hideStills = function() {
+    if(isStillsHidden){
+      setIsStillsHidden(false);
+      setAboutHidden(true);
+    } else {
+      setIsStillsHidden(true);
+      setAboutHidden(false);
+    }
+  };
+
+
   return (
     <div className={blur ? "App_blur" : "App"}>
       <header>
         <div className={'header_text'}>Avery Nguyen Photography</div>
-        <div className={'header_text'}>Content</div>
+        <div className={'header_text'} onClick={() => setDrawer(true)}>Content</div>
       </header>
+      <Drawer anchor={'right'} open={drawer} onClose={()=> setDrawer(false)}>
+            <div onClick={() => {
+              setAboutHidden(true);
+              setStillHidden(true);
+            }}>Home</div>
+            <div onClick={() => {
+              setStillHidden(false); 
+            
+            }}>About</div>
+            <div>Stills</div>
+      </Drawer>
       <div className="info">
         {
         aboutHidden && (width < breakpoint ? <AboutMobile
-                                                onChange={(value) => setStillHidden(value)}
+                                                hide={hideAbout}
+                                                isHidden={isAboutHidden}
                                                 onBlur={(value) => setBlur(value)}/> : 
                                              <About 
-                                                onChange={(value) => setStillHidden(value)}
+                                                hide={hideAbout}
+                                                isHidden={isAboutHidden}
                                                 onBlur={(value) => setBlur(value)}/> )
         
         }
         {aboutHidden && stillHidden && <div className="border"></div>}
         {
-        stillHidden && (width < breakpoint ? <StillsMobile onChange={(value) => setAboutHidden(value)}
+        stillHidden && (width < breakpoint ? <StillsMobile 
+                                                            hide={hideStills}
+                                                            isHidden={isStillsHidden}
                                                            onBlur={(value) => setBlur(value)}/> : 
                                              <Stills 
-                                                    onChange={(value) => setAboutHidden(value)}
+                                                      hide={hideStills}
+                                                      isHidden={isStillsHidden}
                                                     onBlur={(value) => setBlur(value)}
                                                     />)
         }
