@@ -19,15 +19,24 @@
   transition: transform 2s;
 }
 
-#about {
+.about {
+  height: 100%;
+}
+#about_title {
   margin-left: 200px;
+  // height: 100%;
 }
 
 #about_center {
   margin: auto;
+  // height: 100%;
 }
 
 @media only screen and (max-width: 479px) {
+  .about {
+    height: auto;
+  }
+
   #about {
     margin: auto;
     // height: 50%;

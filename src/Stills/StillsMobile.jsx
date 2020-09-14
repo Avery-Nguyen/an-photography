@@ -21,7 +21,7 @@ function StillsMobile(props) {
   return (
     <div className="stills">
       <h1 id={isHidden ? "stills_center" : "stills"} onClick={hide}>Stills</h1>
-      {isHidden && <Gallery photos={photos} />}
+      {isHidden && <Gallery photos={photos}/>}
     </div>
   );
 }

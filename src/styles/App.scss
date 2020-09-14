@@ -16,6 +16,7 @@
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.75);
   transition: backdrop-filter 2s, background-color 2s;
+  height: 100%;
 }
 
 .info {
